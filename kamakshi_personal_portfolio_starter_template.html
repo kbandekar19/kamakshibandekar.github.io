@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kamakshi | Portfolio</title>
+  <meta name="description" content="Portfolio of Kamakshi – Data Science master's student showcasing projects, achievements, and skills." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;            /* background */
+      --surface:#111735;       /* cards/nav */
+      --muted:#9aa4bf;         /* secondary text */
+      --text:#e9eeff;          /* primary text */
+      --brand:#7aa2ff;         /* accent */
+      --brand-2:#9effc7;       /* secondary accent */
+      --ring: rgba(122,162,255,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root{ --bg:#f7f9ff; --surface:#ffffff; --muted:#5a6b8a; --text:#0f1a2f; --brand:#2a66ff; --brand-2:#00b67a; --ring: rgba(42,102,255,.25);}    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 94%); margin-inline:auto}
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--surface) 70%, transparent); border-bottom:1px solid color-mix(in oklab, var(--muted) 30%, transparent);}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand .dot{width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:0 0 0 6px var(--ring)}
+    .nav a{padding:10px 12px; border-radius:10px}
+    .nav a:hover{background:color-mix(in oklab, var(--surface) 85%, transparent)}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:64px 0 28px}
+    .hero-card{background:var(--surface); padding:32px; border-radius:var(--radius); box-shadow:var(--shadow); position:relative; overflow:hidden}
+    .hero h1{font-size:clamp(28px, 4vw, 44px); line-height:1.1; margin:0 0 12px}
+    .subtitle{color:var(--muted); margin:0 0 22px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid color-mix(in oklab, var(--brand) 35%, var(--surface)); cursor:pointer; transition:transform .05s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b1020; font-weight:700; border:none}
+
+    .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 0}
+    .badge{background:color-mix(in oklab, var(--brand) 25%, var(--surface)); border:1px solid color-mix(in oklab, var(--brand) 40%, transparent); color:var(--text); padding:8px 10px; border-radius:999px; font-size:13px}
+
+    .card{background:var(--surface); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .section{padding:36px 0}
+    .section h2{margin:0 0 18px; font-size:clamp(22px, 2.5vw, 30px)}
+    .grid{display:grid; gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+
+    .project{display:flex; flex-direction:column; gap:12px}
+    .project h3{margin:0; font-size:18px}
+    .project p{margin:0; color:var(--muted); font-size:14.5px}
+    .meta{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-size:12.5px; padding:6px 10px; border-radius:999px; background:color-mix(in oklab, var(--surface) 80%, var(--brand)); border:1px solid color-mix(in oklab, var(--brand) 60%, transparent)}
+    .card .row{display:flex; justify-content:space-between; gap:16px; align-items:center}
+
+    .achieve{display:grid; grid-template-columns:40px 1fr; gap:14px; align-items:flex-start}
+    .achieve .icon{width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg, var(--brand-2), var(--brand)); display:grid; place-items:center; font-weight:800; color:#0b1020}
+
+    .skills{display:flex; gap:10px; flex-wrap:wrap}
+    .skills .chip{padding:10px 12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted) 30%, transparent); background:color-mix(in oklab, var(--surface) 85%, transparent); font-size:14px}
+
+    .footer{padding:28px 0 48px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px}
+
+    .socials{display:flex; gap:12px}
+    .socials a{display:inline-grid; place-items:center; width:40px; height:40px; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted) 35%, transparent)}
+    .socials a:hover{background:color-mix(in oklab, var(--surface) 85%, transparent)}
+
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Kamakshi</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero / Intro -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Hello, I’m Kamakshi 👋</h1>
+        <p class="subtitle">Master's student in Data Science, building data products that turn messy data into clear decisions.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">GitHub Profile</a>
+          <a class="btn" href="assets/Kamakshi_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+        <div class="badge-row">
+          <span class="badge">Open to 2026 roles</span>
+          <span class="badge">Actively seeking internships</span>
+          <span class="badge">Denver · Remote</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <strong>Quick Info</strong>
+          <span class="tag">Last updated: Oct 2025</span>
+        </div>
+        <ul>
+          <li><strong>Focus:</strong> ML, NLP, and data visualization</li>
+          <li><strong>Currently:</strong> Researching screen-time effects on sleep & cognition</li>
+          <li><strong>Looking for:</strong> Data Scientist / Analyst roles</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="card">
+        <p>
+          I’m a data science graduate student with a passion for designing human-centered analytics. I enjoy working end-to-end: framing questions, cleaning and exploring data, crafting features, training models, and delivering insights with intuitive visuals.
+        </p>
+        <p>
+          Highlights: discussion-led teaching, UX-focused research, and hands-on work turning real-world messy datasets into clear, defensible recommendations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid cols-3">
+        <!-- Project Card -->
+        <article class="card project">
+          <div class="row"><h3>Sleep & Cognitive Performance Study</h3><a class="tag" href="https://github.com/YOUR_GITHUB_USERNAME/sleep-cognition" target="_blank" rel="noopener">GitHub →</a></div>
+          <p>Quasi-experimental analysis of late-night screen use on sleep quality and next-day cognition; included mitigation strategies like blue-light filters and meditation.</p>
+          <div class="meta">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">StatsModels</span><span class="tag">Seaborn</span>
+          </div>
+        </article>
+        
+        <article class="card project">
+          <div class="row"><h3>Dreamscape PODS Usability Testing</h3><a class="tag" href="https://github.com/YOUR_GITHUB_USERNAME/dreamscape-pods" target="_blank" rel="noopener">GitHub →</a></div>
+          <p>End-to-end UX research for a mobile learning app; synthesized findings into a contract-winning presentation with actionable recommendations.</p>
+          <div class="meta">
+            <span class="tag">UX Research</span><span class="tag">Usability</span><span class="tag">Storytelling</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <div class="row"><h3>Student Performance Prediction</h3><a class="tag" href="https://github.com/YOUR_GITHUB_USERNAME/student-performance-ml" target="_blank" rel="noopener">GitHub →</a></div>
+          <p>Built a regression/classification pipeline predicting academic performance from socio-demographic and engagement variables with interpretable models.</p>
+          <div class="meta">
+            <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">SHAP</span>
+          </div>
+        </article>
+      </div>
+      <p style="color:var(--muted); margin-top:12px">Add more cards by duplicating an <code>&lt;article class="card project"&gt;</code> block and updating the links.</p>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="section">
+      <h2>Achievements</h2>
+      <div class="grid cols-2">
+        <div class="card achieve">
+          <div class="icon">🏆</div>
+          <div>
+            <strong>Top 5% – DataCamp Streak & Projects</strong>
+            <p class="subtitle">Completed 20+ guided projects; recognized for consistency and breadth.</p>
+          </div>
+        </div>
+        <div class="card achieve">
+          <div class="icon">📈</div>
+          <div>
+            <strong>Contract-Winning UX Pitch</strong>
+            <p class="subtitle">Helped lead a 5–8 min team presentation to secure a usability testing engagement.</p>
+          </div>
+        </div>
+        <div class="card achieve">
+          <div class="icon">🎓</div>
+          <div>
+            <strong>Graduate Teaching Facilitator</strong>
+            <p class="subtitle">Designed a 1.5-hour discussion-led session for PhD students on team dynamics.</p>
+          </div>
+        </div>
+        <div class="card achieve">
+          <div class="icon">🧪</div>
+          <div>
+            <strong>Research Lead</strong>
+            <p class="subtitle">Conducted a quasi-experiment on digital device usage impacts on sleep & cognition.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="card">
+        <div class="skills">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span><span class="chip">Scikit‑learn</span><span class="chip">TensorFlow</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Git</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Want to collaborate or chat about opportunities? Reach me here:</p>
+        <div class="skills">
+          <a class="chip" href="mailto:YOUR_EMAIL@example.com">Email</a>
+          <a class="chip" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>© <span id="year"></span> Kamakshi. Built with semantic HTML & vanilla CSS. Deployed on GitHub Pages.</small>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.51.12-3.15 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.64.24 2.85.12 3.15.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5zM7.1 20.5H3.9V9h3.2v11.5zM5.5 7.6A1.86 1.86 0 1 1 7.35 5.7 1.86 1.86 0 0 1 5.5 7.6zM20.5 20.5h-3.2v-5.6c0-1.34 0-3.06-1.87-3.06s-2.15 1.46-2.15 3v5.66h-3.2V9h3.07v1.57h.05a3.38 3.38 0 0 1 3.04-1.67c3.25 0 3.85 2.14 3.85 4.92v6.68z"/></svg>
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{ const href=a.getAttribute('href'); if(href.length>1){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'});} });
+    });
+  </script>
+</body>
+</html>
